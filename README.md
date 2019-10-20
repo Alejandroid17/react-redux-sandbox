@@ -1,6 +1,6 @@
 # React Redux Sandbox
 
-[TOC]
+__TOC__
 
 ## Available Scripts
 
