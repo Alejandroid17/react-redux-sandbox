@@ -1,5 +1,9 @@
 # React Redux Sandbox
 
+App to testing Redux and similar things.
+
+## Table of contents
+
 - [React Redux Sandbox](#react-redux-sandbox)
   * [Available Scripts](#available-scripts)
     + [`npm start`](#npm-start)
