@@ -15,11 +15,11 @@ function Page(props) {
     return (
         <Fragment>
             <CssBaseline />
-            <AppBar />
+            <AppBar title={'Storage'} hasAutocomplete={false}/>
             <div className="results-page">
                 {isEmpty ?
                     <Typography variant="h5" component="h3" className="page-message">
-                        There are no results.
+                        No items saved
                     </Typography>
                     :
                     results.map(item =>

@@ -7,7 +7,6 @@ function reducer(state = defaultState, {type, payload}) {
     switch(type) {
         case findResultsType: {
             const regex = new RegExp(`^${payload}`, 'i');
-
             return items.filter(n => regex.test(n.title));
         }
         default:

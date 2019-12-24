@@ -17,12 +17,17 @@ class IAppBar extends Component {
 
         this.onChangeText = this.onChangeText.bind(this);
         this.onChangeSelection = this.onChangeSelection.bind(this);
+        this.printGlobalState = this.printGlobalState.bind(this);
     }
 
     onChangeText(text) {
         this.setState({ text });
 
         this.props.findSuggestions(text);
+    }
+
+    printGlobalState = () => {
+        console.log(this.props);
     }
 
     onChangeSelection(text) {
@@ -34,10 +39,13 @@ class IAppBar extends Component {
 
     render() {
         const { text } = this.state;
-        const { suggestions } = this.props;
+        const { suggestions, title, hasAutocomplete } = this.props;
 
         return (
             <Page
+                printGlobalState={this.printGlobalState}
+                hasAutocomplete={hasAutocomplete}
+                title={title}
                 text={text}
                 suggestions={suggestions}
                 onChangeText={this.onChangeText}
@@ -50,6 +58,7 @@ class IAppBar extends Component {
 const mapStateToProps = (state) => {
     return {
         suggestions: state.suggestions,
+        ocr: state.ocr,
     };
 };
 

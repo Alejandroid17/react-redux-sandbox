@@ -20,6 +20,7 @@ class Results extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        ocr: state.ocr,
         results: state.results,
     }
 }
@@ -27,10 +28,3 @@ const mapStateToProps = (state) => {
 export default withRouter(
     connect(mapStateToProps)(Results)
 );
-
-// const wrapper = connect(mapStateToProps);
-// const component = wrapper(Results);
-// export default component;
-
-
-

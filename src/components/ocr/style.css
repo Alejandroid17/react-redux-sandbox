@@ -1,0 +1,20 @@
+.dropzone-area {
+    border-radius: 15px;
+}
+
+.ocr-button-generate {
+    margin-top: 1rem !important;
+    width: 100%;
+}
+
+.ocr-button-copy-text, .ocr-button-save-text {
+    width: 100%;
+}
+
+.ocr-confidence-score-text {
+    margin-right: 0.2rem;
+}
+
+.ocr-card {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+}
