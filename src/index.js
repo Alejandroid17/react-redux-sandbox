@@ -6,7 +6,6 @@ import { Snackbar } from 'react-redux-snackbar';
 import store from './redux/store';
 
 import Storage from './components/storage';
-import Details from './components/details';
 import OCR from './components/ocr';
 
 const Root = (
@@ -15,7 +14,6 @@ const Root = (
             <Switch>
                 <Route path='/ocr' component={OCR} />
                 <Route path='/storage' component={Storage} />
-                <Route path='/details/:itemId' component={Details} />
                 <Redirect from='/' to='/ocr' />
             </Switch>
         </BrowserRouter>

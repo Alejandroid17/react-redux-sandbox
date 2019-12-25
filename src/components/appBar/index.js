@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Page from './page';
-import findSuggestions from '../../redux/actions/findSuggestions';
-import findResults from '../../redux/actions/findResults';
 
 
 class IAppBar extends Component {
@@ -22,8 +20,6 @@ class IAppBar extends Component {
 
     onChangeText(text) {
         this.setState({ text });
-
-        this.props.findSuggestions(text);
     }
 
     printGlobalState = () => {
@@ -32,14 +28,12 @@ class IAppBar extends Component {
 
     onChangeSelection(text) {
         this.setState({ text });
-
-        this.props.findResults(text);
         this.props.history.push('/results');
     }
 
     render() {
         const { text } = this.state;
-        const { suggestions, title, hasAutocomplete } = this.props;
+        const { title, hasAutocomplete } = this.props;
 
         return (
             <Page
@@ -47,7 +41,6 @@ class IAppBar extends Component {
                 hasAutocomplete={hasAutocomplete}
                 title={title}
                 text={text}
-                suggestions={suggestions}
                 onChangeText={this.onChangeText}
                 onChangeSelection={this.onChangeSelection}
             />
@@ -72,8 +65,6 @@ const mapStateToProps = (state) => {
 
 //Forma simple
 const mapDispatchToProps = {
-    findSuggestions,
-    findResults,
 }
 
 export default withRouter(

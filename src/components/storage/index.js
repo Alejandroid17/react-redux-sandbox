@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { showSnack } from 'react-redux-snackbar';
-import CopyToClipboard from 'react-copy-to-clipboard';
 
 import Page from './page';
 
