@@ -1,52 +1,62 @@
 import React, { Fragment } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '../appBar';
-import { Typography, Card, CardActionArea, CardMedia, CardContent } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography, Box, ListItem, Button, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core';
+import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+
 import './style.css'
 
+const useStyles = makeStyles(theme => ({
+    root: {
+        flexGrow: 1,
+        padding: '1rem'
+    }
+}));
+
 function Page(props) {
+    const classes = useStyles();
     const {
-        results,
-        goTo,
+        savedOCR,
+        copyText
     } = props;
 
-    const isEmpty = results.length === 0;
+    const isEmpty = savedOCR.length === 0;
 
     return (
         <Fragment>
             <CssBaseline />
-            <AppBar title={'Storage'} hasAutocomplete={false}/>
-            <div className="results-page">
-                {isEmpty ?
-                    <Typography variant="h5" component="h3" className="page-message">
-                        No items saved
+            <AppBar title={'Storage'} hasAutocomplete={false} />
+            <Grid container className={classes.root} spacing={2}>
+                <Grid item xs={12}>
+                    {isEmpty ?
+                        <Typography variant="h5" component="h3" className="page-message">
+                            No items saved
                     </Typography>
-                    :
-                    results.map(item =>
-                        <div
-                            key={item.id}
-                            className="card-container">
-                            <Card className="card"
-                                onClick={() => goTo(`/details/${item.id}`)}>
-                                <CardActionArea>
-                                    <CardMedia className="card-media"
-                                        image={item.image}
-                                        title={item.title}
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            {item.title}
-                                        </Typography>
-                                        <Typography component="p">
-                                            {item.content}
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </div>
-                    )
-                }
-            </div>
+                        :
+                        savedOCR.map((value, index) => {
+                            return (
+                                <Box boxShadow={3} key={index}>
+                                    <ListItem>
+                                        <ListItemAvatar>
+                                            <Avatar><InsertDriveFileIcon /></Avatar>
+                                        </ListItemAvatar>
+                                        <ListItemText
+                                            primary={value.filename}
+                                            secondary={value.text}
+                                        />
+                                        <CopyToClipboard text={value['text']} onCopy={copyText}>
+                                            <Button color="primary"><FileCopyIcon /></Button>
+                                        </CopyToClipboard>
+                                    </ListItem>
+                                </Box>
+                            )
+                        })
+                    }
+                </Grid>
+            </Grid>
         </Fragment>
     );
 }

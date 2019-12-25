@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { showSnack } from 'react-redux-snackbar';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 import Page from './page';
 
 class Storage extends Component {
+    constructor(props) {
+        super(props);
+
+        this.copyText = this.copyText.bind(this);
+    }
+
+    copyText = () => {
+        this.props.showSnack('copy-text-id', {
+            label: 'Copied!',
+            timeout: 2000,
+        });
+    }
+
     render() {
-        const { results } = this.props;
+        const { ocr } = this.props;
         return (
             <Page
-                results={results}
-                goTo={(path) => {
-                    this.props.history.push(path);
-                }}
+                savedOCR={ocr.savedOCR}
+                copyText={this.copyText}
             />
         )
     }
@@ -21,10 +34,13 @@ class Storage extends Component {
 const mapStateToProps = (state) => {
     return {
         ocr: state.ocr,
-        results: state.results,
     }
 }
 
+const mapDispatchToProps = {
+    showSnack,
+}
+
 export default withRouter(
-    connect(mapStateToProps)(Storage)
+    connect(mapStateToProps, mapDispatchToProps)(Storage)
 );
