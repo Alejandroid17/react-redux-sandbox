@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Page from './page';
 
-class Results extends Component {
+class Storage extends Component {
     render() {
         const { results } = this.props;
         return (
@@ -26,5 +26,5 @@ const mapStateToProps = (state) => {
 }
 
 export default withRouter(
-    connect(mapStateToProps)(Results)
+    connect(mapStateToProps)(Storage)
 );
