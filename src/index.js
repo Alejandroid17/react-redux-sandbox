@@ -10,7 +10,7 @@ import OCR from './components/ocr';
 
 const Root = (
     <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Switch>
                 <Route path='/ocr' component={OCR} />
                 <Route path='/storage' component={Storage} />
