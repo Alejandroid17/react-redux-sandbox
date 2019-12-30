@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
+import { HashRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { Snackbar } from 'react-redux-snackbar';
 import store from './redux/store';
 
@@ -10,14 +10,14 @@ import OCR from './components/ocr';
 
 const Root = (
     <Provider store={store}>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <HashRouter>
             <Switch>
-                <Route path='/ocr' component={OCR} />
-                <Route path='/storage' component={Storage} />
+                <Route exact path='/ocr' component={OCR} />
+                <Route exact path='/storage' component={Storage} />
                 <Redirect from='/' to='/ocr' />
             </Switch>
-        </BrowserRouter>
-        <Snackbar/>
+        </HashRouter>
+        <Snackbar />
     </Provider>
 );
 
