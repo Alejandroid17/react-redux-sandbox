@@ -1,7 +1,8 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Autocomplete from '../autocomplete';
 import './style.css'
@@ -9,24 +10,28 @@ import './style.css'
 function Page(props) {
 
     const {
-        title,
         hasAutocomplete,
         text,
         suggestions,
         onChangeText,
         onChangeSelection,
-        printGlobalState
+        printGlobalState,
+        setSidebarState
     } = props;
 
-    let headerTitle = title !== undefined ? title : 'React Redux SandBox';
     let showAutocomplete = hasAutocomplete !== undefined ? hasAutocomplete : true;
 
     return (
-        <AppBar position="static">
+        <AppBar position="sticky">
             <Toolbar className="appbar">
-                <Typography variant="h6" color="inherit">
-                    {headerTitle}
-                </Typography>
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={setSidebarState}
+                >
+                    <MenuIcon />
+                </IconButton>
 
                 {showAutocomplete && <Autocomplete
                     text={text}

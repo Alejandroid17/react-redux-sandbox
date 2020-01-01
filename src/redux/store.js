@@ -3,6 +3,7 @@ import { createStore, combineReducers } from 'redux';
 import { snackbarReducer } from 'react-redux-snackbar';
 
 import ocr from './reducers/ocr';
+
 import { loadState, saveState } from './localStorage'
 
 

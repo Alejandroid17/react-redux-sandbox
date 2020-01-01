@@ -8,7 +8,6 @@ class IAppBar extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             text: '',
         };
@@ -33,13 +32,13 @@ class IAppBar extends Component {
 
     render() {
         const { text } = this.state;
-        const { title, hasAutocomplete } = this.props;
+        const { hasAutocomplete, setSidebarState } = this.props;
 
         return (
             <Page
                 printGlobalState={this.printGlobalState}
                 hasAutocomplete={hasAutocomplete}
-                title={title}
+                setSidebarState={setSidebarState}
                 text={text}
                 onChangeText={this.onChangeText}
                 onChangeSelection={this.onChangeSelection}

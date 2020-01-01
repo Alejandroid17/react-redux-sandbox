@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '../appBar';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Button, List, ListItem, ListItemText, Box, ListItemAvatar, Avatar, CardContent, Typography, CardMedia, CardHeader, Card, CardActions } from '@material-ui/core';
 import { DropzoneArea } from 'material-ui-dropzone';
@@ -11,6 +10,7 @@ import './style.css'
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
+        marginTop: '3.5rem'
     },
     paper: {
         height: 140,
@@ -56,7 +56,6 @@ function Page(props) {
     return (
         <Fragment>
             <CssBaseline />
-            <AppBar title={'OCR'} hasAutocomplete={false} />
             <Grid container className={classes.root} spacing={2}>
                 <Grid item xs={6}>
                     <Paper className={classes.paperLeft}>
